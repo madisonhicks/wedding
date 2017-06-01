@@ -8,7 +8,8 @@ from os import path
 from flask import Flask
 
 
-STATIC_DIR = path.join(path.dirname(__file__), '../static')
+TEMPLATE_DIR = path.join(path.dirname(__file__), '../potato_client')
+STATIC_DIR = path.join(TEMPLATE_DIR, 'static')
 
 
 def create_app() -> Flask:
@@ -18,7 +19,7 @@ def create_app() -> Flask:
     """
     app = Flask(
         'potato_wedding',
-        static_path=STATIC_DIR,
-        template_folder=STATIC_DIR,
+        static_folder=STATIC_DIR,
+        template_folder=TEMPLATE_DIR,
     )
     return app

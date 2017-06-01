@@ -1,0 +1,49 @@
+body {
+  background-color: #132849;
+  position: relative;
+}
+
+.holder {
+  background-image: url("/static/img/tile.jpg");
+  width: 100%;
+  height: 100%;
+  position: fixed;
+}
+
+.header {
+  background-color: #fffbee;
+  border: 2px solid #ffa856;
+  width: 95%;
+  height: 20%;
+  left: 1%;
+  margin: 20px;
+  position: absolute;
+  text-align: center;
+  font-family: Georgia;
+}
+
+.main {
+  postion: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.navigation {
+  background-color: #fffbee;
+  border: 2px solid #ffa856;
+  width: 95%;
+  height: 30%;
+  position: relative;
+  margin: 24px;
+  top: 25%;
+}
+
+.component {
+  position: relative;
+  background-color: #eefbff;
+  border: 2px solid #399fbe;
+  display: inline-block;
+  width: 300px;
+  height: 200px;
+  margin: 10px 10px 10px 10px;
+}
