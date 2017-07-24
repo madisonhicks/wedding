@@ -8,7 +8,7 @@ from os import path
 from flask import Flask
 
 
-TEMPLATE_DIR = path.join(path.dirname(__file__), '../potato_client')
+TEMPLATE_DIR = path.join(path.dirname(__file__), '../potato_client/build')
 STATIC_DIR = path.join(TEMPLATE_DIR, 'static')
 
 
