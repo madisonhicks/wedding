@@ -7,9 +7,10 @@ from flask import render_template
 from potato_wedding.app import create_app
 
 
-app = create_app()
+application = create_app()
 
-@app.route('/')
+
+@application.route('/')
 def index() -> str:
     """index view for flask app
     
@@ -18,7 +19,7 @@ def index() -> str:
     return render_template('index.html')
 
 
-@app.route('/page_two')
+@application.route('/page_two')
 def page_two() -> str:
     """Return page two HTML
     
@@ -29,5 +30,5 @@ def page_two() -> str:
 
 if __name__ == '__main__':
     # import ipdb; ipdb.set_trace()
-    app.run(debug=True)
+    application.run(debug=True)
 
