@@ -130,6 +130,106 @@ class Details extends Component {
   }
 }
 
+
+/* An accommodation link. Props are:
+    - url: the url to link
+    - title: the text for the url
+ */
+class AccommodationLink extends Component {
+  constructor(props) {
+    super(props);
+    // this.props.description = ('description' in props) ? props.description : ''
+  }
+  render() {
+    return(
+      <a href={this.props.url}>{this.props.title}</a>
+    )
+  }
+}
+
+
+/*
+An accommodation item. Takes as properties:
+  - links, which is an array of objects of the form:
+      location: the URL
+      description: the text of the link
+  - description, which is a description for the link(s)
+
+    for example:
+    <AccomodationItem links={[
+      {location: 'foo.bar', title: 'bar'},
+      {'location': 'locationtwo.com', title:'location two'}
+     ]}/>
+ */
+class AccommodationItem extends Component {
+  constructor(props) {
+    super(props)
+    // this.props.links is going to be an array
+  }
+  render() {
+    return(
+      <div>
+        {this.props.links.map(link => {
+          return (
+            <span>
+              <AccommodationLink url={link.url} title={link.title}/><br/>
+            </span>
+          )
+        })}
+        <br/>
+        <span>{this.props.description}</span>
+      </div>
+    )
+  }
+}
+
+/*
+A list of travel accommodations
+
+- takes a property, accommodations, which is an array of objects, of the form:
+
+  [
+    {
+      'links': [{'url': 'some_url', 'title': 'some_title'}],
+      'description': 'some blurb'
+    },
+    . . .
+  ]
+
+ */
+class AccommodationList extends Component {
+  constructor(props) {
+    super(props)
+  }
+
+  render() {
+    return(
+      <div>
+        <ol>
+          {this.props.accommodations.map(accommodation => {
+            return(
+              <li key={accommodation.description}>
+                <AccommodationItem
+                  links={accommodation.links}
+                  description={accommodation.description}/>
+              </li>
+            )
+          })}
+        </ol>
+      </div>
+    )
+  }
+}
+
+
+const ACCOMMODATIONS = [
+  {
+    links: [{url: 'www.google.com', title: 'Google'}],
+    description: 'this is just google'
+  }
+];
+
+
 class Travel extends Component {
   render() {
     return(
@@ -376,6 +476,7 @@ class Travel extends Component {
               </p>
             </li>
           </ol>
+          <AccommodationList accommodations={ACCOMMODATIONS}/>
         </div>
         <br />
       </div>
