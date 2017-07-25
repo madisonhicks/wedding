@@ -10,22 +10,14 @@ from potato_wedding.app import create_app
 application = create_app()
 
 
-@application.route('/')
-def index() -> str:
+@application.route('/', defaults={'path': ''})
+@application.route('/<path:path>')
+def index(path) -> str:
     """index view for flask app
     
     :return: the HTML for the index
     """
     return render_template('index.html')
-
-
-@application.route('/page_two')
-def page_two() -> str:
-    """Return page two HTML
-    
-    :return: the html for page two
-    """
-    return render_template('page_two.html')
 
 
 if __name__ == '__main__':
