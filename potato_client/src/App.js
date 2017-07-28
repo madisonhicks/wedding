@@ -130,6 +130,15 @@ class Details extends Component {
   }
 }
 
+/* A travel item. Props are:
+    - via: the title of the travel item
+    -
+*/
+class TravelItem extends Component {
+  constructor(props) {
+    super(props)
+  }
+}
 
 /* An accommodation link. Props are:
     - url: the url to link
@@ -156,7 +165,7 @@ An accommodation item. Takes as properties:
   - description, which is a description for the link(s)
 
     for example:
-    <AccomodationItem links={[
+    <AccommodationItem links={[
       {location: 'foo.bar', title: 'bar'},
       {'location': 'locationtwo.com', title:'location two'}
      ]}/>
@@ -176,8 +185,7 @@ class AccommodationItem extends Component {
             </span>
           )
         })}
-        <br/>
-        <span>{this.props.description}</span>
+        <span style={{fontFamily: 'PT Sans'}}>{this.props.description}</span>
       </div>
     )
   }
@@ -208,10 +216,11 @@ class AccommodationList extends Component {
         <ol>
           {this.props.accommodations.map(accommodation => {
             return(
-              <li key={accommodation.description}>
+              <li key={accommodation.links[0].url}>
                 <AccommodationItem
                   links={accommodation.links}
                   description={accommodation.description}/>
+                  <br />
               </li>
             )
           })}
@@ -224,9 +233,122 @@ class AccommodationList extends Component {
 
 const ACCOMMODATIONS = [
   {
-    links: [{url: 'www.google.com', title: 'Google'}],
-    description: 'this is just google'
+    links: [
+      {url: "http://www.westinaustindowntown.com/?_aa_Google_My_Business__WI_3899__NAD_FM&SWAQ=958P",
+        title: "The Westin Austin Downtown:"}
+      ],
+    description: "292 feet from the venue, a one-minute walk."
+  },
+  {
+    links: [
+      {url: "http://www.marriott.com/hotels/travel/ausrd-residence-inn-austin-downtown-convention-center/?scid=bb1a189a-fec3-4d19-a255-54ba596febe2",
+        title: "Residence Inn Austin Downtown"},
+      {url: "http://www.marriott.com/hotels/travel/auscd-courtyard-austin-downtown-convention-center/?scid=bb1a189a-fec3-4d19-a255-54ba596febe2",
+        title: "Courtyard Marriott Austin Downtown"}
+      ],
+    description: "These two hotels, both by Marriott, are in the same building 0.1 miles from the venue, a three-minute walk."
+  },
+  {
+    links: [
+      {url:"http://www3.hilton.com/en/hotels/texas/hilton-austin-AUSCVHH/index.html",
+        title: "Hilton Austin"}
+    ],
+    description: "0.1 miles from the venue, a three-minute walk."
+  },
+  {
+    links: [
+      {url: "http://www.driskillhotel.com/",
+        title: "The Driskill"}
+    ],
+    description: "The Driskill, an iconic Austin experience, is 0.2 miles from the venue, a four minute walk."
+  },
+  {
+    links: [
+      {url:"https://austindowntown.place.hyatt.com/en/hotel/home.html",
+        title: "Hyatt Place Austin Downtown"}
+    ],
+    description: "0.2 miles from the venue, a five-minute walk."
+  },
+  {
+    links: [
+      {url: "https://www.omnihotels.com/hotels/austin-downtown",
+        title: "Omni Austin Hotel Downtown"}
+    ],
+    description: "0.2 miles from the venue, a six-minute walk."
+  },
+  {
+    links: [
+      {url: "http://hamptoninn3.hilton.com/en/hotels/texas/hampton-inn-and-suites-austin-downtown-convention-center-AUSDTHX/index.html",
+        title: "Hampton Inn & Suites Austin-Downtown"}
+    ],
+    description: "0.3 miles from the venue, a six-minute walk."
+  },
+  {
+    links: [
+      {url: "https://www.ihg.com/intercontinental/hotels/us/en/austin/ausha/hoteldetail?cm_mmc=GoogleMaps-_-IC-_-USA-_-AUSHA",
+        title: "Intercontinental Stephen F. Austin"}
+    ],
+    description: "0.3 miles from the venue, a six-minute walk."
+  },
+  {
+    links: [
+      {url: "http://hiltongardeninn3.hilton.com/en/hotels/texas/hilton-garden-inn-austin-downtown-convention-center-AUSGIGI/index.html",
+        title: "Hilton Garden Inn Austin Downtown"}
+    ],
+    description: "0.3 miles from the venue, a six-minute walk."
+  },
+  {
+    links: [
+      {url: "http://www.marriott.com/hotels/travel/ausjw-jw-marriott-austin/?scid=bb1a189a-fec3-4d19-a255-54ba596febe2",
+        title: "JW Marriott Austin"}
+    ],
+    description: "0.4 miles from the venue, an eight-minute walk."
   }
+];
+
+const LOCALACCOMMODATIONS = [
+  {
+    links: [
+      {url: "http://austinmotel.com/",
+        title: "Austin Motel"}
+    ],
+    description: "Cute, iconic motel on South Congress, 1.5 miles from the venue. Seven minutes by car, 29 minutes on foot."
+  },
+  {
+    links: [
+      {url: "http://hotelsaintcecilia.com/",
+        title: "Hotel Saint Cecilia"}
+    ],
+    description: "Named for the patron saint of musicians. 1.5 miles from the venue; eight minutes by car or a half-hour walk."
+  },
+  {
+    links: [
+      {url: "http://www.bravahouse.com/",
+        title: "Brava House"}
+    ],
+    description: "Beautiful bed and breakfast in Old West Austin. 1.5 miles from the venue; eight minutes by car or 32 minutes on foot."
+  },
+  {
+    links: [
+      {url: "http://hotelella.com/",
+        title: "Hotel Ella"}
+    ],
+    description: "Located between campus and downtown, and full of Texas Modernist art. 1.6 miles from the venue; ten minutes by car"
+  },
+  {
+    links: [
+      {url: "http://fairviewaustin.com/",
+        title: "The Fairview"}
+    ],
+    description: "Bed & breakfast in quiet Travis Heights district 1.7 miles from the venue. Nine minutes by car or a 35-minute walk."
+  },
+  {
+    links: [
+      {url: "http://www.innpearl.com/",
+        title: "Austin's Inn at Pearl Street"}
+    ],
+    description: "Charming inn with themed rooms. 1.7 miles from the venue; ten minutes by car or 36 minutes on foot."
+  },
 ];
 
 
@@ -300,7 +422,7 @@ class Travel extends Component {
           </p>
         </div>
         <br />
-              <h2>Accommodations in Austin</h2>
+        <h2>Accommodations in Austin</h2>
         <h3>Conveniently Located</h3>
         <div className="textblock">
           <p>
@@ -308,177 +430,17 @@ class Travel extends Component {
             below are the ten hotels closest to the venue in descending order of
             proximity.
           </p>
-          <ol>
-            <li>
-              <a href="http://www.westinaustindowntown.com/?_aa_Google_My_Business__WI_3899__NAD_FM&SWAQ=958P"
-                 target="_blank">
-                <h4>The Westin Austin Downtown:</h4>
-              </a>
-              <p className="hotel">
-                292 feet from the venue, a one-minute walk.
-              </p>
-            </li>
-            <li>
-              <h4>
-                <a href="http://www.marriott.com/hotels/travel/ausrd-residence-inn-austin-downtown-convention-center/?scid=bb1a189a-fec3-4d19-a255-54ba596febe2"
-                   target="_blank">
-                  Residence Inn Austin Downtown
-                </a> /
-                <a href="http://www.marriott.com/hotels/travel/auscd-courtyard-austin-downtown-convention-center/?scid=bb1a189a-fec3-4d19-a255-54ba596febe2"
-                   target="_blank">
-                  Courtyard Marriott Austin Downtown
-                </a>
-              </h4>
-              <p className="hotel">
-                These two hotels, both by Marriott, are in the same building 0.1
-                miles from the venue, a three-minute walk.
-              </p>
-            </li>
-            <li>
-              <a href="http://www3.hilton.com/en/hotels/texas/hilton-austin-AUSCVHH/index.html"
-                 target="_blank">
-                <h4>Hilton Austin</h4>
-              </a>
-              <p className="hotel">
-                0.1 miles from the venue, a three-minute walk.
-              </p>
-            </li>
-            <li>
-              <a href="http://www.driskillhotel.com/"
-                 target="_blank">
-                <h4>The Driskill</h4>
-              </a>
-              <p className="hotel">
-                The Driskill, an iconic Austin experience, is 0.2 miles from
-                the venue, a four minute walk.
-              </p>
-            </li>
-            <li>
-              <a href="https://austindowntown.place.hyatt.com/en/hotel/home.html"
-                 target="_blank">
-                <h4>Hyatt Place Austin Downtown</h4>
-              </a>
-              <p className="hotel">
-                0.2 miles from the venue, a five-minute walk.
-              </p>
-            </li>
-            <li>
-              <a href="https://www.omnihotels.com/hotels/austin-downtown"
-                 target="_blank">
-                <h4>Omni Austin Hotel Downtown</h4>
-              </a>
-              <p className="hotel">
-                0.2 miles from the venue, a six-minute walk.
-              </p>
-            </li>
-            <li>
-              <a href="http://hamptoninn3.hilton.com/en/hotels/texas/hampton-inn-and-suites-austin-downtown-convention-center-AUSDTHX/index.html"
-                 target="_blank">
-                <h4>Hampton Inn & Suites Austin-Downtown</h4>
-              </a>
-              <p className="hotel">
-                0.3 miles from the venue, a six-minute walk.
-              </p>
-            </li>
-            <li>
-              <a href="https://www.ihg.com/intercontinental/hotels/us/en/austin/ausha/hoteldetail?cm_mmc=GoogleMaps-_-IC-_-USA-_-AUSHA"
-                 target="_blank">
-                <h4>Intercontinental Stephen F. Austin</h4>
-              </a>
-              <p className="hotel">
-                0.3 miles from the venue, a six-minute walk.
-              </p>
-            </li>
-            <li>
-              <a href="http://hiltongardeninn3.hilton.com/en/hotels/texas/hilton-garden-inn-austin-downtown-convention-center-AUSGIGI/index.html"
-                 target="_blank">
-                <h4>Hilton Garden Inn Austin Downtown</h4>
-              </a>
-              <p className="hotel">
-                0.3 miles from the venue, a six-minute walk.
-              </p>
-            </li>
-            <li>
-              <a href="http://www.marriott.com/hotels/travel/ausjw-jw-marriott-austin/?scid=bb1a189a-fec3-4d19-a255-54ba596febe2"
-                 target="_blank">
-                <h4>JW Marriott Austin</h4>
-              </a>
-              <p className="hotel">
-                0.4 miles from the venue, an eight-minute walk.
-              </p>
-            </li>
-          </ol>
+          <AccommodationList accommodations={ACCOMMODATIONS}/>
         </div>
-        <br />
-        <h3>Local Color</h3>
+          <h3>Local Color</h3>
         <div className="textblock">
           <p>
             For guests who are more interested in a uniquely Austin experience
             than proximity to the venue, below are six options within two miles
             of the venue.
           </p>
-          <ol>
-            <li>
-              <a href="http://austinmotel.com/"
-                 target="_blank">
-                <h4>Austin Motel</h4>
-              </a>
-              <p className="hotel">
-                Cute, iconic motel on South Congress, 1.5 miles from the venue.
-                Seven minutes by car, 29 minutes on foot.
-              </p>
-            </li>
-            <li>
-              <a href="http://hotelsaintcecilia.com/"
-                 target="_blank">
-                <h4>Hotel Saint Cecilia</h4>
-              </a>
-              <p className="hotel">
-                Named for the patron saint of musicians. 1.5 miles from the venue;
-                eight minutes by car or a half-hour walk.
-              </p>
-            </li>
-            <li>
-              <a href="http://www.bravahouse.com/">
-                <h4>Brava House</h4>
-              </a>
-              <p className="hotel">
-                Beautiful bed and breakfast in Old West Austin. 1.5 miles from
-                the venue; eight minutes by car or 32 minutes on foot.
-              </p>
-            </li>
-            <li>
-              <a href="http://hotelella.com/">
-                <h4>Hotel Ella</h4>
-              </a>
-              <p className="hotel">
-                Located between campus and downtown, and full of Texas Modernist
-                art. 1.6 miles from the venue; ten minutes by car
-                <p className="hotel">or 34 minutes on foot.</p>
-              </p>
-            </li>
-            <li>
-              <a href="https://fairviewaustin.com/">
-                <h4>The Fairview</h4>
-              </a>
-              <p className="hotel">
-                Bed & breakfast in quiet Travis Heights district 1.7 miles from
-                the venue. Nine minutes by car or a 35-minute walk.
-              </p>
-            </li>
-            <li>
-              <a href="http://www.innpearl.com/">
-                <h4>Austin's Inn at Pearl Street</h4>
-              </a>
-              <p className="hotel">
-                Charming inn with themed rooms. 1.7 miles from the venue; ten
-                minutes by car or 36 minutes on foot.
-              </p>
-            </li>
-          </ol>
-          <AccommodationList accommodations={ACCOMMODATIONS}/>
+          <AccommodationList accommodations={LOCALACCOMMODATIONS}/>
         </div>
-        <br />
       </div>
     )
   }
