@@ -306,7 +306,7 @@ const ACCOMMODATIONS = [
   }
 ];
 
-const LOCALACCOMMODATIONS = [
+const LOCAL_ACCOMMODATIONS = [
   {
     links: [
       {url: "http://austinmotel.com/",
@@ -439,7 +439,7 @@ class Travel extends Component {
             than proximity to the venue, below are six options within two miles
             of the venue.
           </p>
-          <AccommodationList accommodations={LOCALACCOMMODATIONS}/>
+          <AccommodationList accommodations={LOCAL_ACCOMMODATIONS}/>
         </div>
       </div>
     )
