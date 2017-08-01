@@ -3,9 +3,12 @@ import {
   BrowserRouter as Router,
   Route,
   Link
-} from 'react-router-dom'
+} from 'react-router-dom';
+import ReactMarkdown from 'react-markdown';
 import logo from './logo.svg';
 import './App.css';
+
+
 
 
 const styles = {
@@ -131,14 +134,87 @@ class Details extends Component {
 }
 
 /* A travel item. Props are:
-    - via: the title of the travel item
+    -
     -
 */
 class TravelItem extends Component {
   constructor(props) {
     super(props)
   }
+  render() {
+    return(
+      <div>
+        <span style={{fontSize: '18px', fontWeight: 'bold'}}>{this.props.item.title}</span>
+        <br/>
+        <div className="textblock">
+          <ReactMarkdown source={this.props.item.description} />
+        </div>
+      </div>
+    )
+  }
 }
+
+class TravelContents extends Component {
+  constructor(props) {
+    super(props)
+  }
+  render() {
+    return(
+      <div>
+        {this.props.travels.map(travel => {
+          return(
+            <TravelItem
+              item={travel}
+            />
+          )
+        })}
+      </div>
+    )
+  }
+}
+
+const TRAVEL = [
+  {
+    title: 'By Air',
+    description: `Austin is serviced by the **Austin-Bergstrom International Airport**
+            (airport code **AUS**), which is located about eight miles
+            southeast of downtown. Direct flights are available to and from most
+            major U.S. cities, including Boston (BOS), New Orleans (MSY),
+            San Diego (SAN), Los Angeles (LAX), Washington D.C. (IAD & DCA),
+            Detroit (DTW), and El Paso (ELP). Outside the airport is a fleet
+            of taxis waiting to ferry you off to your final destination in the
+            Austin area. If you prefer ridesharing services, we highly recommend
+            Austin's own local nonprofit rideshare company, Ride Austin. There
+            are, of course, also rental car services on the lower level of the
+            airport. A car ride from the airport to central Austin is usually
+            around 20 minutes, but will likely be longer during rush hour. The
+            airport is also serviced by two city bus routes.  
+            [Click here for the Austin-Bergstrom International Airport homepage](http://www.austintexas.gov/airport)`
+  },
+  {
+    title: 'By Automobile',
+    description: `Those driving into Austin will likely end up entering the city
+            proper via the I-35, MoPac, or 183. All three of these routes become
+            extremely backed up during rush hour, which is Monday-Friday **6:00-
+            9:00 a.m.** and **4:00-7:00 p.m.**. We recommend planning your
+            drive to avoid reaching Austin during these times, for your own sanity.  
+            [Click here to see current traffic conditions in Austin](http://www.statesman.com/traffic/)`
+  },
+  {
+    title: 'By Rail',
+    description: `In the unlikely event that you choose to make the journey to Austin
+            by train, you'll be arriving at the Austin Amtrak station, which
+            is conveniently located downtown. Taxis and rideshare are readily
+            available downtown, and there are a number of bus stops in the
+            immediate vicinity.  
+            [Click here for the Amtrak Austin station information page](https://www.amtrak.com/servlet/ContentServer?pagename=am/am2Station/Station_Page&code=AUS")`
+  },
+  {
+    title: 'By Teleportation',
+    description: `We have no advice for those teleporting to Austin, we just want to
+            know how you're doing it.`
+  }
+]
 
 /* An accommodation link. Props are:
     - url: the url to link
@@ -180,12 +256,15 @@ class AccommodationItem extends Component {
       <div>
         {this.props.links.map(link => {
           return (
-            <span>
+            <span style={{fontSize: '16px', fontWeight: 'bold', fontFamily: 'Cormorant SC'}}>
               <AccommodationLink url={link.url} title={link.title}/><br/>
             </span>
           )
         })}
-        <span style={{fontFamily: 'PT Sans'}}>{this.props.description}</span>
+        {/*<span style={{fontFamily: 'PT Sans'}}>{this.props.description}</span>*/}
+        <div style={{fontFamily: 'PT Sans'}}>
+            <ReactMarkdown source={this.props.description}/>
+        </div>
       </div>
     )
   }
@@ -260,7 +339,7 @@ const ACCOMMODATIONS = [
       {url: "http://www.driskillhotel.com/",
         title: "The Driskill"}
     ],
-    description: "The Driskill, an iconic Austin experience, is 0.2 miles from the venue, a four minute walk."
+    description: "The Driskill, an Austin legend, is 0.2 miles from the venue, a four minute walk."
   },
   {
     links: [
@@ -357,78 +436,15 @@ class Travel extends Component {
     return(
       <div className="subwrap">
         <h2>Traveling to Austin</h2>
-        <h3>By Air</h3>
-        <div className="textblock">
-          <p>
-            Austin is serviced by the <b>Austin-Bergstrom International Airport
-            </b> (airport code <b>AUS</b>), which is located about eight miles
-            southeast of downtown. Direct flights are available to and from most
-            major U.S. cities, including Boston (BOS), New Orleans (MSY),
-            San Diego (SAN), Los Angeles (LAX), Washington D.C. (IAD & DCA),
-            Detroit (DTW), and El Paso (ELP). Outside the airport is a fleet
-            of taxis waiting to ferry you off to your final destination in the
-            Austin area. If you prefer ridesharing services, we highly recommend
-            Austin's own local nonprofit rideshare company, Ride Austin. There
-            are, of course, also rental car services on the lower level of the
-            airport. A car ride from the airport to central Austin is usually
-            around 20 minutes, but will likely be longer during rush hour. The
-            airport is also serviced by two city bus routes.
-          </p>
-          <p>
-            <a href="http://www.austintexas.gov/airport" target="_blank">
-              Click here for the Austin-Bergstrom International Airport homepage
-            </a>
-          </p>
-        </div>
-        <br />
-        <h3>By Automobile</h3>
-        <div className="textblock">
-          <p>
-            Those driving into Austin will likely end up entering the city
-            proper via the I-35, MoPac, or 183. All three of these routes become
-            extremely backed up during rush hour, which is Monday-Friday <b>6:00-
-            9:00 a.m.</b> and <b>4:00-7:00 p.m.</b>. We recommend planning your
-            drive to avoid reaching Austin during these times, for your own sanity.
-          </p>
-          <p>
-            <a href="http://www.statesman.com/traffic/" target="_blank">
-              Click here to see current traffic conditions in Austin
-            </a>
-          </p>
-        </div>
-        <br />
-        <h3>By Rail</h3>
-        <div className="textblock">
-          <p>
-            In the unlikely event that you choose to make the journey to Austin
-            by train, you'll be arriving at the Austin Amtrak station, which
-            is conveniently located downtown. Taxis and rideshare are readily
-            available downtown, and there are a number of bus stops in the
-            immediate vicinity.
-          </p>
-          <p>
-            <a href="https://www.amtrak.com/servlet/ContentServer?pagename=am/am2Station/Station_Page&code=AUS"
-               target="_blank">
-              Click here for the Amtrak Austin station information page
-            </a>
-          </p>
-        </div>
-        <br />
-        <h3>By Teleportation</h3>
-        <div className="textblock">
-          <p>
-            We have no advice for those teleporting to Austin, we just want to
-            know how you're doing it.
-          </p>
-        </div>
+        <TravelContents travels={TRAVEL}/>
         <br />
         <h2>Accommodations in Austin</h2>
         <h3>Conveniently Located</h3>
         <div className="textblock">
           <p>
-            The number of hotels located in downtown Austin approaches the absurd;
-            below are the ten hotels closest to the venue in descending order of
-            proximity.
+            There are dozens of hotels in downtown Austin, and many within walking
+            distance of the wedding venue. Below are the ten hotels closest to
+            the venue in descending order of proximity.
           </p>
           <AccommodationList accommodations={ACCOMMODATIONS}/>
         </div>
@@ -446,6 +462,232 @@ class Travel extends Component {
   }
 }
 
+/* An Austin link. Props are
+    - url: the url to the link
+    - title: the text of the url
+*/
+class AustinLink extends Component {
+  constructor(props) {
+    super(props)
+  }
+  render() {
+    return(
+      <a href={this.props.url}>{this.props.title}</a>
+    )
+  }
+}
+
+class AustinItem extends Component {
+  constructor(props) {
+    super(props)
+  }
+  render() {
+    return(
+      <div>
+        {this.props.links.map(link => {
+          return(
+            <span style={{fontSize: '16px', fontWeight: 'bold', fontFamily: 'Cormorant SC'}}>
+              <AustinLink url={link.url} title={link.title}/> <br />
+            </span>
+          )
+        })}
+        <div style={{fontFamily: 'PT Sans'}}>
+            <ReactMarkdown source={this.props.description}/>
+        </div>
+      </div>
+    )
+  }
+}
+
+class AustinContents extends Component {
+  constructor(props) {
+    super(props)
+  }
+  render() {
+    return(
+      <div>
+        {this.props.activities.map(activity => {
+          return(
+            <div>
+              <AustinItem
+                links={activity.links}
+                description={activity.description} />
+              <br />
+            </div>
+          )
+        })}
+      </div>
+    )
+  }
+}
+
+const ACTIVITIES = [
+  {
+    links: [
+      {url: "https://drafthouse.com/austin",
+        title: "Alamo Drafthouse Cinema"}
+      ],
+    description: `Catch a movie at the Alamo Drafthouse Cinema, which has locations
+            all around Austin and may be the best movie theater ever. Take
+            special note of the Signature Series screenings.`
+  },
+  {
+    links: [
+      {url: "http://austinot.com/austin-greenbelt-guide",
+        title: "Barton Springs Greenbelt"}
+      ],
+    description: `Austin's weather is at its most obliging in April, perfect for taking 
+            a hike and a swim on the Barton Springs Greenbelt. The main trail is 
+            between seven and eight miles long, with a number of access points at 
+            various spots along its route. We recommend hiking at least a mile 
+            from any given access point to clear the swimming crowds. Swimming 
+            conditions vary based on rainfall, so [check online](http://www.greenbeltnow.com/) 
+            before planning your hike.`
+  },
+  {
+    links: [
+      {url: "http://www.zilkergarden.org",
+        title: "Zilker Botanical Garden"}
+      ],
+    description: `For a more sedate outdoor experience, check out the beautiful Zilker
+            Botanical Garden, located just southwest of downtown.`
+  },
+  {
+    links: [
+      {url: "http://www.elephantroom.com/",
+        title: "The Elephant Room"}
+      ],
+    description: `Live jazz every night of the week. Music starts at 9:30 p.m., but get
+            there early (9:00-9:15) for the best seats--seating is hard to come
+            by after 10:00 or so on Fridays and Saturdays. This is our favorite
+            going-out spot.`
+  },
+  {
+    links: [
+      {url: "https://blantonmuseum.org/",
+        title: "Blanton Museum of Art"}
+      ],
+    description: `There's nothing more welcome after walking in the Texas heat than the
+            chilly, hyperregulated air of an art museum. The Blanton has a
+            particularly diverse collection of Latin American art, and an impressive
+            number of drawings and prints.`
+  },
+  {
+    links: [
+      {url: "http://www.bookpeople.com/",
+        title: "BookPeople"}
+      ],
+    description: `We love love love this large independent bookstore. The selection is
+            vast and meticulously organized, and there are probably 60
+            staff-recommended selections (indicated by note-card sized reviews
+            affixed to the shelf) at any given time. Unlike most downtown locations,
+            BookPeople has free parking, if you can find a space in their lot.
+            While you're there, head across the street to Waterloo Records.`
+  },
+]
+
+const FOOD = [
+  {
+    links: [
+      {url: "http://torchystacos.com/",
+        title: "Torchy's Tacos"}
+      ],
+    description: `You can't come to Austin and not have a taco. Torchy's has several
+            locations around Austin and a new special every month. Do keep your
+            eyes peeled, though, for little taco trucks around town. These minikin
+            eateries, too many and various to enumerate here, often boast some
+            of the best tacos in town.`
+  },
+  {
+    links: [
+      {url: "http://pinthousepizza.com/",
+        title: "Pinthouse Pizza"}
+      ],
+    description: `Amazing pizza, a wall full of beers on tap, and casual cafeteria-style
+            seating. Like most Austin restaurants, this place can get pretty
+            crowded at dinner time.`
+  },
+  {
+    links: [
+      {url: "http://www.kome-austin.com/",
+        title: "Kome"}
+      ],
+    description: `Moderately priced place with delicious home-style Japanese food. Not
+            your typical Japanese restaurant`
+  },
+  {
+    links: [
+      {url: "http://uchiaustin.com/",
+        title: "Uchi"}
+      ],
+    description: `If you're looking for a more upscale Japanese dining experience, we
+            love Uchi and its sister restaurant, [Uchiko](http://uchikoaustin.com). 
+            The food at both of these restaurants is beautifully presented, and 
+            the flavors are amazing. Try something from their sake menu.`
+  },
+  {
+    links: [
+      {url: "http://easytigeraustin.com/",
+        title: "Easy Tiger"}
+      ],
+    description: `Excellent beer selection, and a menu that ranges from salty snacks
+            (think: housemade chex mix) to artisan sandwiches. The boards, which
+            are wooden planks arrayed with an assortment of cheeses, sausages, etc,
+            are a fantastic middle ground. If you don't have time to sit down for
+            a drink, swing in to pick up a croissant to go.`
+  },
+  {
+    links: [
+      {url: "https://www.dolcenevegelato.com/about-us/",
+        title: "Dolce Neve"}
+      ],
+    description: `Real Italian gelato made with local ingredients. Words do this place
+            no justice. Their cappuccinos are also perfect.`
+  },
+]
+
+const RESOURCES = [
+  {
+    links: [
+      {url: "https://www.austintexas.org/",
+        title: "Visit Austin"}
+      ],
+    description: `General guide to the city, packed with all the information you could
+            ever want.`
+  },
+  {
+    links: [
+      {url: "http://do512.com/",
+        title: "Do512"}
+      ],
+    description: `Austin event listing website. Also check out the kid-friendly
+            version, [Do512 Family](http://do512family.com).`
+  },
+  {
+    links: [
+      {url: "https://www.capmetro.org/",
+        title: "CapMetro"}
+      ],
+    description: `Capital Metro operates the city's bus system, and their website has
+            everything you need to know about routes, fares, and passes.`
+  },
+  {
+    links: [
+      {url: "http://www.rideaustin.com/#introducing-ride-austin",
+        title: "Ride Austin"}
+      ],
+    description: `Austin's very own nonprofit rideshare company allows you to round up
+            your fare to the nearest dollar and donate the difference to a local
+            charity of your choice.`
+  },
+  {
+    links: [
+      {url: "http://austinbcycle.com",
+        title: "Austin B-cycle"}
+      ],
+    description: `Ultra-convenient bicycle rental service in the downtown area.`
+  },
+]
 
 class Austin extends Component {
   render() {
@@ -458,159 +700,19 @@ class Austin extends Component {
             a few of our favorites.</p>
           <br />
           <h3>Activities & Entertainment</h3>
-          <a href="https://drafthouse.com/austin">
-            <h4>Alamo Drafthouse Cinema</h4>
-          </a>
-          <p>
-            Catch a movie at the Alamo Drafthouse Cinema, which has locations
-            all around Austin and may be the best movie theater ever. Take
-            special note of the Signature Series screenings.
-          </p>
-          <a href="http://austinot.com/austin-greenbelt-guide">
-            <h4>Barton Springs Greenbelt</h4>
-          </a>
-          <p>
-            Austin's weather is at its most obliging in April, perfect for taking
-            a hike and a swim on the Barton Springs Greenbelt. The main trail is
-            between seven and eight miles long, with a number of access points at
-            various spots along its route. We recommend hiking at least a mile
-            from any given access point to clear the swimming crowds. Swimming
-            conditions vary based on rainfall, but <a href="http://www.greenbeltnow.com/">
-            this website</a> provides
-            up-to-date conditions for each of the several swimming holes along
-            the spring.
-          </p>
-          <a href="http://www.zilkergarden.org/">
-            <h4>Zilker Botanical Garden</h4>
-          </a>
-          <p>
-            For a more sedate outdoor experience, check out the beautiful Zilker
-            Botanical Garden, located just southwest of downtown.
-          </p>
-          <a href="http://www.elephantroom.com/">
-            <h4>The Elephant Room</h4>
-          </a>
-          <p>
-            Live jazz every night of the week. Music starts at 9:30 p.m., but get
-            there early (9:00-9:15) for the best seats--seating is hard to come
-            by after 10:00 or so on Fridays and Saturdays. This is our favorite
-            going-out spot.
-          </p>
-          <a href="https://blantonmuseum.org/">
-            <h4>Blanton Museum of Art</h4>
-          </a>
-          <p>
-            There's nothing more welcome after walking in the Texas heat than the
-            chilly, hyperregulated air of an art museum. The Blanton has a
-            particularly diverse collection of Latin American art, and an impressive
-            number of drawings and prints.
-          </p>
-          <a href="http://www.bookpeople.com/">
-            <h4>BookPeople</h4>
-          </a>
-          <p>
-            We love love love this large independent bookstore. The selection is
-            vast and meticulously organized, and there are probably 60
-            staff-recommended selections (indicated by note-card sized reviews
-            affixed to the shelf) at any given time. Unlike most downtown locations,
-            BookPeople has free parking, if you can find a space in their lot.
-            While you're there, head across the street to Waterloo Records.
-          </p>
+          <AustinContents activities={ACTIVITIES}/>
+
           <br />
           <h3>Food & Drink</h3>
-          <a href="http://torchystacos.com/">
-            <h4>Torchy's Tacos</h4>
-          </a>
-          <p>
-            You can't come to Austin and not have a taco. Torchy's has several
-            locations around Austin and a new special every month. Do keep your
-            eyes peeled, though, for little taco trucks around town. These minikin
-            eateries, too many and various to enumerate here, often boast some
-            of the best tacos in town.
-          </p>
-          <a href="http://pinthousepizza.com/">
-            <h4>Pinthouse Pizza</h4>
-          </a>
-          <p>
-            Amazing pizza, a wall full of beers on tap, and casual cafeteria-style
-            seating. Like most Austin restaurants, this place can get pretty
-            crowded at dinner time.
-          </p>
-          <a href="http://www.kome-austin.com/">
-            <h4>Kome</h4>
-          </a>
-          <p>
-            Moderately priced place with delicious home-style Japanese food. Not
-            your typical Japanese restaurant.
-          </p>
-          <a href="http://uchiaustin.com/">
-            <h4>Uchi</h4>
-          </a>
-          <p>
-            If you're looking for a more upscale Japanese dining experience, we
-            love Uchi and its sister restaurant, <a href="http://uchikoaustin.com/">
-            Uchiko</a>. The food at both of these restaurants is beautifully
-            presented, and the flavors are transcendent. Try something from their
-            amazing sake menu.
-          </p>
-          <a href="http://easytigeraustin.com/">
-            <h4>Easy Tiger</h4>
-          </a>
-          <p>
-            Excellent beer selection, and a menu that ranges from salty snacks
-            (think: housemade chex mix) to artisan sandwiches. The boards, which
-            are wooden planks arrayed with an assortment of cheeses, sausages, etc,
-            are a fantastic middle ground. If you don't have time to sit down for
-            a drink, swing in to pick up a croissant to go.
-          </p>
-          <a href="https://www.dolcenevegelato.com/about-us/">
-            <h4>Dolce Neve</h4>
-          </a>
-          <p>
-            Real Italian gelato made with local ingredients. Words do this place
-            no justice. Their cappuccinos are also perfect.
-          </p>
+          <AustinContents activities={FOOD}/>
+
           <br />
           <h3>Resources</h3>
           <p>
             Below are links to Austin visitor guides, as well as to information
             on getting around the city.
           </p>
-          <a href="https://www.austintexas.org/">
-            <h4>Visit Austin</h4>
-          </a>
-          <p>
-            General guide to the city, packed with all the information you could
-            ever want.
-          </p>
-          <a href="http://do512.com/">
-            <h4>Do512</h4>
-          </a>
-          <p>
-            Austin event listing website. Also check out the kid-friendly
-            version, <a href="http://do512family.com/">Do512 family</a>.
-          </p>
-          <a href="https://www.capmetro.org/">
-            <h4>CapMetro</h4>
-          </a>
-          <p>
-            Capital Metro operates the city's bus system, and their website has
-            everything you need to know about routes, fares, and passes.
-          </p>
-          <a href="http://www.rideaustin.com/#introducing-ride-austin">
-            <h4>Ride Austin</h4>
-          </a>
-          <p>
-            Austin's very own nonprofit rideshare company allows you to round up
-            your fare to the nearest dollar and donate the difference to a local
-            charity of your choice.
-          </p>
-          <a href="http://austinbcycle.com/">
-            <h4>Austin B-cycle</h4>
-          </a>
-          <p>
-            Ultra-convenient bicycle rental service in the downtown area.
-          </p>
+          <AustinContents activities={RESOURCES}/>
         </div>
         <br />
       </div>
