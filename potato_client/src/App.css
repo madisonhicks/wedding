@@ -101,6 +101,7 @@ body {
 .textblock {
   margin: 1px 50px;
   text-align: justify;
+  font-family: 'PT Sans', sans-serif;
 }
 
 .hotel {
