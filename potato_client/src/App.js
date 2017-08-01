@@ -261,7 +261,6 @@ class AccommodationItem extends Component {
             </span>
           )
         })}
-        {/*<span style={{fontFamily: 'PT Sans'}}>{this.props.description}</span>*/}
         <div style={{fontFamily: 'PT Sans'}}>
             <ReactMarkdown source={this.props.description}/>
         </div>
