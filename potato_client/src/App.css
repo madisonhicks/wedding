@@ -52,25 +52,25 @@ body {
   border: 2px dashed gold;
 }
 
-.box1 {
+.detailsBox {
   grid-column: 1;
   grid-row: 1;
   justify-self: center;
 }
 
-.box2 {
+.travelBox {
   grid-column: 2;
   grid-row: 1;
   justify-self: center;
 }
 
-.box3 {
+.austinBox {
   grid-column: 3;
   grid-row: 1;
   justify-self: center;
 }
 
-.box4 {
+.registryBox {
   grid-column-start: 2;
   grid-column-end: 3;
   grid-row: 2;
@@ -79,7 +79,7 @@ body {
   justify-self: center;
 }
 
-#content {
+.content {
   background-color: #FFE4CD;
   border: 4px double #D22204;
   margin: 50px auto;
