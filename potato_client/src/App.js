@@ -45,7 +45,7 @@ class Main extends Component {
         <div className="wrappette">
           <div className="detailsBox">
             <h3>Event Details</h3>
-            <div className="image" onClick={window.scrollTo(0, 650)}>
+            <div className="image">
               <Link to="/details">
                 <img src="static/img/pecan.jpg" />
               </Link>
@@ -77,6 +77,9 @@ class Main extends Component {
 }
 
 class Details extends Component {
+  componentDidMount() {
+      window.scrollTo(0, 650)
+    }
   render() {
     return(
       <div className="content">
@@ -143,17 +146,23 @@ class Details extends Component {
   }
 }
 
-function Registry() {
-  return(
-    <div className="content">
-      <div className="subwrap">
-        <a href="https://www.amazon.com/wedding/madison-hicks-matthew-planchard-austin-april-2018/registry/21FIX1VLOPLNV">
-          <h3>Click here to go to the registry</h3>
-        </a>
-        <p>The registry will continue to be updated as we get closer to the wedding.</p>
+class Registry extends Component {
+  componentDidMount() {
+    window.scrollTo(0, 650)
+  }
+
+  render() {
+    return(
+      <div className="content">
+        <div className="subwrap">
+          <a href="https://www.amazon.com/wedding/madison-hicks-matthew-planchard-austin-april-2018/registry/21FIX1VLOPLNV">
+            <h3>Click here to go to the registry</h3>
+          </a>
+          <p>The registry will continue to be updated as we get closer to the wedding.</p>
+        </div>
       </div>
-    </div>
-  )
+    )
+  }
 }
 
 

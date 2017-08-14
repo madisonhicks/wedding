@@ -237,6 +237,9 @@ const RESOURCES = [
 ];
 
 export default class Austin extends Component {
+  componentDidMount() {
+      window.scrollTo(0, 650)
+    }
   render() {
     return(
       <div className='content'>

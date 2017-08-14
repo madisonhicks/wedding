@@ -18,6 +18,9 @@ class TravelItem extends Component {
   constructor(props) {
     super(props)
   }
+  componentDidMount() {
+      window.scrollTo(0, 650)
+    }
   render() {
     return(
       <div>
