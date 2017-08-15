@@ -85,7 +85,7 @@ const TRAVEL = [
 class AccommodationLink extends Component {
   render() {
     return(
-      <a href={this.props.url} target="_blank" ref="noopener noreferrer">{this.props.title}</a>
+      <a href={this.props.url} target="_blank" rel="noopener noreferrer">{this.props.title}</a>
     )
   }
 }
