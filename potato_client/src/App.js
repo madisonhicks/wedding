@@ -4,9 +4,6 @@ import {
   Route,
   Link
 } from 'react-router-dom';
-import ScrollableAnchor, { goToAnchor, removeHash } from 'react-scrollable-anchor'
-import ReactMarkdown from 'react-markdown';
-import logo from './logo.svg';
 import './App.css';
 import Austin from './components/Austin.js'
 import Travel from './components/Travel.js'
@@ -47,7 +44,7 @@ class Main extends Component {
             <h3>Event Details</h3>
             <div className="image">
               <Link to="/details">
-                <img src="static/img/pecan.jpg" />
+                <img src="static/img/pecan.jpg" alt="cafe pic"/>
               </Link>
             </div>
           </div>
@@ -55,7 +52,7 @@ class Main extends Component {
             <h3>Travel</h3>
             <div className="image">
               <Link to="/travel">
-                <img src="static/img/roadmap.jpg"/>
+                <img src="static/img/roadmap.jpg" alt="austin roadmap"/>
               </Link>
             </div>
           </div>
@@ -63,7 +60,7 @@ class Main extends Component {
             <h3>Around Austin</h3>
             <div className="image" >
               <Link to="/austin">
-                <img src="static/img/austin.jpg"/>
+                <img src="static/img/austin.jpg" alt="austin tx"/>
               </Link>
             </div>
           </div>
@@ -133,7 +130,8 @@ class Details extends Component {
             </p>
             <p>
               <a href="https://www.wunderground.com/cgi-bin/findweather/getForecast?query=pws:KTXAUSTI646"
-                 target="_blank">
+                 target="_blank"
+                 rel="noopener noreferrer" >
                 Click here to see Austin's current weather conditions
               </a>
             </p>
@@ -156,7 +154,8 @@ class Registry extends Component {
       <div className="content">
         <div className="subwrap">
           <a href="https://www.amazon.com/wedding/madison-hicks-matthew-planchard-austin-april-2018/registry/21FIX1VLOPLNV"
-             target="_blank">
+             target="_blank"
+             rel="noopener noreferrer">
             <h3>Click here to go to the registry</h3>
           </a>
           <p>The registry will continue to be updated as we get closer to the wedding.</p>
