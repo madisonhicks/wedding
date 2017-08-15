@@ -3,11 +3,6 @@
  */
 
 import React, {Component} from 'react';
-import {
-  BrowserRouter as Router,
-  Route,
-  Link
-} from 'react-router-dom';
 import ReactMarkdown from 'react-markdown';
 
 /* A travel item. Props are:
@@ -15,9 +10,6 @@ import ReactMarkdown from 'react-markdown';
     -
 */
 class TravelItem extends Component {
-  constructor(props) {
-    super(props)
-  }
   componentDidMount() {
       window.scrollTo(0, 650)
     }
@@ -35,9 +27,6 @@ class TravelItem extends Component {
 }
 
 class TravelContents extends Component {
-  constructor(props) {
-    super(props)
-  }
   render() {
     return(
       <div>
@@ -97,10 +86,6 @@ const TRAVEL = [
 ]
 
 class AccommodationLink extends Component {
-  constructor(props) {
-    super(props);
-    // this.props.description = ('description' in props) ? props.description : ''
-  }
   render() {
     return(
       <a href={this.props.url}>{this.props.title}</a>
@@ -123,10 +108,6 @@ An accommodation item. Takes as properties:
      ]}/>
  */
 class AccommodationItem extends Component {
-  constructor(props) {
-    super(props)
-    // this.props.links is going to be an array
-  }
   render() {
     return(
       <div>
@@ -160,10 +141,6 @@ A list of travel accommodations
 
  */
 class AccommodationList extends Component {
-  constructor(props) {
-    super(props)
-  }
-
   render() {
     return(
       <div>

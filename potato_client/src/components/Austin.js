@@ -3,11 +3,6 @@
  */
 
 import React, {Component} from 'react';
-import {
-  BrowserRouter as Router,
-  Route,
-  Link
-} from 'react-router-dom';
 import ReactMarkdown from 'react-markdown';
 
 /* An Austin link. Props are
@@ -15,9 +10,6 @@ import ReactMarkdown from 'react-markdown';
     - title: the text of the url
 */
 class AustinLink extends Component {
-  constructor(props) {
-    super(props)
-  }
   render() {
     return(
       <a href={this.props.url}>{this.props.title}</a>
@@ -26,9 +18,6 @@ class AustinLink extends Component {
 }
 
 class AustinItem extends Component {
-  constructor(props) {
-    super(props)
-  }
   render() {
     return(
       <div>
@@ -48,9 +37,6 @@ class AustinItem extends Component {
 }
 
 class AustinContents extends Component {
-  constructor(props) {
-    super(props)
-  }
   render() {
     return(
       <div>
