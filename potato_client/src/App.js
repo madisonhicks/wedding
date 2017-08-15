@@ -155,7 +155,8 @@ class Registry extends Component {
     return(
       <div className="content">
         <div className="subwrap">
-          <a href="https://www.amazon.com/wedding/madison-hicks-matthew-planchard-austin-april-2018/registry/21FIX1VLOPLNV">
+          <a href="https://www.amazon.com/wedding/madison-hicks-matthew-planchard-austin-april-2018/registry/21FIX1VLOPLNV"
+             target="_blank">
             <h3>Click here to go to the registry</h3>
           </a>
           <p>The registry will continue to be updated as we get closer to the wedding.</p>
