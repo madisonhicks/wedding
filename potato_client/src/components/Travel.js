@@ -5,10 +5,7 @@
 import React, {Component} from 'react';
 import ReactMarkdown from 'react-markdown';
 
-/* A travel item. Props are:
-    -
-    -
-*/
+
 class TravelItem extends Component {
   componentDidMount() {
       window.scrollTo(0, 650)
