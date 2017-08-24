@@ -40,28 +40,30 @@ class Main extends Component {
     return (
       <div className="wrapper">
         <div className="wrappette">
-          <div className="detailsBox">
-            <h3>Event Details</h3>
-            <div className="image">
-              <Link to="/details">
-                <img src="static/img/pecan.jpg" alt="cafe pic"/>
-              </Link>
+          <div className="flexWrap">
+            <div className="detailsBox">
+              <h3>Event Details</h3>
+              <div className="image">
+                <Link to="/details">
+                  <img src="static/img/pecan.jpg" alt="cafe pic"/>
+                </Link>
+              </div>
             </div>
-          </div>
-          <div className="travelBox">
-            <h3>Travel</h3>
-            <div className="image">
-              <Link to="/travel">
-                <img src="static/img/roadmap.jpg" alt="austin roadmap"/>
-              </Link>
+            <div className="travelBox">
+              <h3>Travel</h3>
+              <div className="image">
+                <Link to="/travel">
+                  <img src="static/img/roadmap.jpg" alt="austin roadmap"/>
+                </Link>
+              </div>
             </div>
-          </div>
-          <div className="austinBox">
-            <h3>Around Austin</h3>
-            <div className="image" >
-              <Link to="/austin">
-                <img src="static/img/austin.jpg" alt="austin tx"/>
-              </Link>
+            <div className="austinBox">
+              <h3>Around Austin</h3>
+              <div className="image" >
+                <Link to="/austin">
+                  <img src="static/img/austin.jpg" alt="austin tx"/>
+                </Link>
+              </div>
             </div>
           </div>
           <div className="registryBox">
