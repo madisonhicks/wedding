@@ -4,12 +4,9 @@
 
 import React, {Component} from 'react';
 import ReactMarkdown from 'react-markdown';
-
+import ScrollableAnchor from 'react-scrollable-anchor';
 
 class TravelItem extends Component {
-  componentDidMount() {
-      window.scrollTo(0, 650)
-    }
   render() {
     return(
       <div>
@@ -284,29 +281,34 @@ const LOCAL_ACCOMMODATIONS = [
 export default class Travel extends Component {
   render() {
     return(
-      <div className="content">
-        <div className="subwrap">
-          <h2>Traveling to Austin</h2>
-          <TravelContents travels={TRAVEL}/>
-          <br />
-          <h2>Accommodations in Austin</h2>
-          <h3>Conveniently Located</h3>
-          <div className="textblock">
-            <p>
-              There are dozens of hotels in downtown Austin, and many within walking
-              distance of the wedding venue. Below are the ten hotels closest to
-              the venue in descending order of proximity.
-            </p>
-            <AccommodationList accommodations={ACCOMMODATIONS}/>
-          </div>
-            <h3>Local Color</h3>
-          <div className="textblock">
-            <p>
-              For guests who are more interested in a uniquely Austin experience
-              than proximity to the venue, below are six options within two miles
-              of the venue.
-            </p>
-            <AccommodationList accommodations={LOCAL_ACCOMMODATIONS}/>
+      <div>
+        <ScrollableAnchor id={'travel'}>
+          <div></div>
+        </ScrollableAnchor>
+        <div className="content">
+          <div className="subwrap">
+            <h2>Traveling to Austin</h2>
+            <TravelContents travels={TRAVEL}/>
+            <br />
+            <h2>Accommodations in Austin</h2>
+            <h3>Conveniently Located</h3>
+            <div className="textblock">
+              <p>
+                There are dozens of hotels in downtown Austin, and many within walking
+                distance of the wedding venue. Below are the ten hotels closest to
+                the venue in descending order of proximity.
+              </p>
+              <AccommodationList accommodations={ACCOMMODATIONS}/>
+            </div>
+              <h3>Local Color</h3>
+            <div className="textblock">
+              <p>
+                For guests who are more interested in a uniquely Austin experience
+                than proximity to the venue, below are six options within two miles
+                of the venue.
+              </p>
+              <AccommodationList accommodations={LOCAL_ACCOMMODATIONS}/>
+            </div>
           </div>
         </div>
       </div>
