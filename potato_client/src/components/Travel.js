@@ -4,7 +4,7 @@
 
 import React, {Component} from 'react';
 import ReactMarkdown from 'react-markdown';
-import ScrollableAnchor, { goToAnchor } from 'react-scrollable-anchor';
+import ScrollableAnchor from 'react-scrollable-anchor';
 
 class TravelItem extends Component {
   render() {

@@ -4,7 +4,7 @@ import {
   Route,
   Link
 } from 'react-router-dom';
-import ScrollableAnchor, { goToAnchor } from 'react-scrollable-anchor';
+import ScrollableAnchor from 'react-scrollable-anchor';
 import './App.css';
 import Austin from './components/Austin.js'
 import Travel from './components/Travel.js'
