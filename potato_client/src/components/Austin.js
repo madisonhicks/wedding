@@ -4,6 +4,7 @@
 
 import React, {Component} from 'react';
 import ReactMarkdown from 'react-markdown';
+import ScrollableAnchor, { goToAnchor } from 'react-scrollable-anchor';
 
 /* An Austin link. Props are
     - url: the url to the link
@@ -223,35 +224,37 @@ const RESOURCES = [
 ];
 
 export default class Austin extends Component {
-  componentDidMount() {
-      window.scrollTo(0, 650)
-    }
   render() {
     return(
-      <div className='content'>
-        <div className="subwrap">
-          <h2>Things to Do in Austin</h2>
-          <div className="textblock">
-            <p>
-              There are a million things to do in Austin. Below are our
-              a few of our favorites.</p>
+      <div>
+          <ScrollableAnchor id={'austin'}>
+            <div></div>
+          </ScrollableAnchor>
+          <div className='content'>
+            <div className="subwrap">
+              <h2>Things to Do in Austin</h2>
+              <div className="textblock">
+                <p>
+                  There are a million things to do in Austin. Below are our
+                  a few of our favorites.</p>
+              </div>
+                <h3>Activities & Entertainment</h3>
+                <AustinContents activities={ACTIVITIES}/>
+
+                <br />
+                <h3>Food & Drink</h3>
+                <AustinContents activities={FOOD}/>
+
+                <br />
+                <h3>Resources</h3>
+                <p>
+                  Below are links to Austin visitor guides, as well as to information
+                  on getting around the city.
+                </p>
+                <AustinContents activities={RESOURCES}/>
+              <br />
+            </div>
           </div>
-            <h3>Activities & Entertainment</h3>
-            <AustinContents activities={ACTIVITIES}/>
-
-            <br />
-            <h3>Food & Drink</h3>
-            <AustinContents activities={FOOD}/>
-
-            <br />
-            <h3>Resources</h3>
-            <p>
-              Below are links to Austin visitor guides, as well as to information
-              on getting around the city.
-            </p>
-            <AustinContents activities={RESOURCES}/>
-          <br />
-        </div>
       </div>
     )
   }
